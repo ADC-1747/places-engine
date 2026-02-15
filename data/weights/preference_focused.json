@@ -1,0 +1,8 @@
+{
+  "preference_match": 15,
+  "distance_penalty": -1,
+  "crowd_penalty": -5,
+  "time_efficiency": 2,
+  "logical_sequence": 3
+}
+

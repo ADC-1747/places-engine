@@ -1,0 +1,57 @@
+{
+  "user": {
+    "lat": 12.9716,
+    "lng": 77.5946,
+    "time_available_minutes": 200,
+    "preferences": ["dinner", "entertainment"],
+    "avoid": ["crowded"],
+    "start_time": "19:00"
+  },
+  "places": [
+    {
+      "id": "p1",
+      "name": "Fine Dining Restaurant",
+      "type": "restaurant",
+      "lat": 12.9722,
+      "lng": 77.5952,
+      "avg_duration_minutes": 90,
+      "crowd_level": "medium",
+      "open_from": "18:00",
+      "open_to": "23:00"
+    },
+    {
+      "id": "p2",
+      "name": "Cinema Complex",
+      "type": "cinema",
+      "lat": 12.9705,
+      "lng": 77.5960,
+      "avg_duration_minutes": 120,
+      "crowd_level": "high",
+      "open_from": "10:00",
+      "open_to": "23:00"
+    },
+    {
+      "id": "p3",
+      "name": "Quiet Bar",
+      "type": "bar",
+      "lat": 12.9730,
+      "lng": 77.5935,
+      "avg_duration_minutes": 60,
+      "crowd_level": "low",
+      "open_from": "17:00",
+      "open_to": "01:00"
+    },
+    {
+      "id": "p4",
+      "name": "Rooftop Lounge",
+      "type": "bar",
+      "lat": 12.9695,
+      "lng": 77.5958,
+      "avg_duration_minutes": 45,
+      "crowd_level": "medium",
+      "open_from": "18:00",
+      "open_to": "02:00"
+    }
+  ]
+}
+

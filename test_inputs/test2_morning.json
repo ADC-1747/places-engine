@@ -1,0 +1,57 @@
+{
+  "user": {
+    "lat": 12.9716,
+    "lng": 77.5946,
+    "time_available_minutes": 120,
+    "preferences": ["coffee", "breakfast"],
+    "avoid": [],
+    "start_time": "08:00"
+  },
+  "places": [
+    {
+      "id": "p1",
+      "name": "Sunrise Cafe",
+      "type": "cafe",
+      "lat": 12.9720,
+      "lng": 77.5950,
+      "avg_duration_minutes": 30,
+      "crowd_level": "low",
+      "open_from": "07:00",
+      "open_to": "15:00"
+    },
+    {
+      "id": "p2",
+      "name": "Morning Park",
+      "type": "park",
+      "lat": 12.9735,
+      "lng": 77.5930,
+      "avg_duration_minutes": 45,
+      "crowd_level": "low",
+      "open_from": "05:00",
+      "open_to": "22:00"
+    },
+    {
+      "id": "p3",
+      "name": "Breakfast Spot",
+      "type": "restaurant",
+      "lat": 12.9700,
+      "lng": 77.5955,
+      "avg_duration_minutes": 40,
+      "crowd_level": "medium",
+      "open_from": "08:00",
+      "open_to": "11:00"
+    },
+    {
+      "id": "p4",
+      "name": "Gym",
+      "type": "gym",
+      "lat": 12.9725,
+      "lng": 77.5940,
+      "avg_duration_minutes": 60,
+      "crowd_level": "medium",
+      "open_from": "06:00",
+      "open_to": "22:00"
+    }
+  ]
+}
+

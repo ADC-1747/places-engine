@@ -1,0 +1,57 @@
+{
+  "user": {
+    "lat": 12.9716,
+    "lng": 77.5946,
+    "time_available_minutes": 150,
+    "preferences": ["entertainment", "food"],
+    "avoid": ["crowded"],
+    "start_time": "18:00"
+  },
+  "places": [
+    {
+      "id": "p1",
+      "name": "Popular Restaurant",
+      "type": "restaurant",
+      "lat": 12.9720,
+      "lng": 77.5950,
+      "avg_duration_minutes": 60,
+      "crowd_level": "high",
+      "open_from": "17:00",
+      "open_to": "23:00"
+    },
+    {
+      "id": "p2",
+      "name": "Busy Cinema",
+      "type": "cinema",
+      "lat": 12.9730,
+      "lng": 77.5935,
+      "avg_duration_minutes": 90,
+      "crowd_level": "high",
+      "open_from": "10:00",
+      "open_to": "23:00"
+    },
+    {
+      "id": "p3",
+      "name": "Crowded Mall",
+      "type": "mall",
+      "lat": 12.9705,
+      "lng": 77.5955,
+      "avg_duration_minutes": 75,
+      "crowd_level": "high",
+      "open_from": "10:00",
+      "open_to": "22:00"
+    },
+    {
+      "id": "p4",
+      "name": "Nightclub",
+      "type": "nightclub",
+      "lat": 12.9715,
+      "lng": 77.5945,
+      "avg_duration_minutes": 120,
+      "crowd_level": "high",
+      "open_from": "20:00",
+      "open_to": "04:00"
+    }
+  ]
+}
+

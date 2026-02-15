@@ -1,0 +1,57 @@
+{
+  "user": {
+    "lat": 12.9716,
+    "lng": 77.5946,
+    "time_available_minutes": 200,
+    "preferences": ["shopping", "food"],
+    "avoid": [],
+    "start_time": "15:00"
+  },
+  "places": [
+    {
+      "id": "p1",
+      "name": "Morning Market",
+      "type": "market",
+      "lat": 12.9720,
+      "lng": 77.5950,
+      "avg_duration_minutes": 60,
+      "crowd_level": "high",
+      "open_from": "06:00",
+      "open_to": "14:00"
+    },
+    {
+      "id": "p2",
+      "name": "Afternoon Cafe",
+      "type": "cafe",
+      "lat": 12.9730,
+      "lng": 77.5935,
+      "avg_duration_minutes": 40,
+      "crowd_level": "medium",
+      "open_from": "14:00",
+      "open_to": "22:00"
+    },
+    {
+      "id": "p3",
+      "name": "Evening Restaurant",
+      "type": "restaurant",
+      "lat": 12.9705,
+      "lng": 77.5955,
+      "avg_duration_minutes": 75,
+      "crowd_level": "medium",
+      "open_from": "18:00",
+      "open_to": "23:00"
+    },
+    {
+      "id": "p4",
+      "name": "All Day Mall",
+      "type": "mall",
+      "lat": 12.9715,
+      "lng": 77.5945,
+      "avg_duration_minutes": 90,
+      "crowd_level": "high",
+      "open_from": "10:00",
+      "open_to": "22:00"
+    }
+  ]
+}
+

@@ -1,0 +1,57 @@
+{
+  "user": {
+    "lat": 12.9716,
+    "lng": 77.5946,
+    "time_available_minutes": 150,
+    "preferences": ["nightlife", "entertainment"],
+    "avoid": ["crowded"],
+    "start_time": "20:00"
+  },
+  "places": [
+    {
+      "id": "p1",
+      "name": "Nightclub A",
+      "type": "nightclub",
+      "lat": 12.9720,
+      "lng": 77.5950,
+      "avg_duration_minutes": 120,
+      "crowd_level": "high",
+      "open_from": "22:00",
+      "open_to": "04:00"
+    },
+    {
+      "id": "p2",
+      "name": "Quiet Jazz Bar",
+      "type": "bar",
+      "lat": 12.9730,
+      "lng": 77.5935,
+      "avg_duration_minutes": 60,
+      "crowd_level": "low",
+      "open_from": "19:00",
+      "open_to": "02:00"
+    },
+    {
+      "id": "p3",
+      "name": "Concert Venue",
+      "type": "venue",
+      "lat": 12.9705,
+      "lng": 77.5955,
+      "avg_duration_minutes": 90,
+      "crowd_level": "high",
+      "open_from": "20:00",
+      "open_to": "23:00"
+    },
+    {
+      "id": "p4",
+      "name": "Karaoke Bar",
+      "type": "bar",
+      "lat": 12.9715,
+      "lng": 77.5945,
+      "avg_duration_minutes": 45,
+      "crowd_level": "medium",
+      "open_from": "18:00",
+      "open_to": "01:00"
+    }
+  ]
+}
+

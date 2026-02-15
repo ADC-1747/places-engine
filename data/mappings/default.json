@@ -1,0 +1,16 @@
+{
+  "coffee": ["cafe", "coffee"],
+  "walk": ["park", "trail", "walk"],
+  "quiet": ["library", "bookstore", "park", "museum", "gallery"],
+  "culture": ["museum", "gallery", "monument", "library"],
+  "nature": ["park", "garden", "trail"],
+  "breakfast": ["cafe", "restaurant", "bakery"],
+  "dinner": ["restaurant"],
+  "entertainment": ["cinema", "venue", "bar", "nightclub"],
+  "nightlife": ["bar", "nightclub", "venue"],
+  "shopping": ["mall", "market", "bookstore"],
+  "food": ["restaurant", "cafe", "bakery", "market"],
+  "sightseeing": ["monument", "museum", "gallery"],
+  "quick": ["cafe", "bakery"]
+}
+

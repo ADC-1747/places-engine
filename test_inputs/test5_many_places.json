@@ -1,0 +1,90 @@
+{
+  "user": {
+    "lat": 12.9716,
+    "lng": 77.5946,
+    "time_available_minutes": 240,
+    "preferences": ["culture", "quiet", "walk"],
+    "avoid": ["crowded"],
+    "start_time": "10:00"
+  },
+  "places": [
+    {
+      "id": "p1",
+      "name": "Art Museum",
+      "type": "museum",
+      "lat": 12.9720,
+      "lng": 77.5950,
+      "avg_duration_minutes": 60,
+      "crowd_level": "low",
+      "open_from": "10:00",
+      "open_to": "18:00"
+    },
+    {
+      "id": "p2",
+      "name": "Botanical Garden",
+      "type": "park",
+      "lat": 12.9735,
+      "lng": 77.5930,
+      "avg_duration_minutes": 50,
+      "crowd_level": "low",
+      "open_from": "06:00",
+      "open_to": "19:00"
+    },
+    {
+      "id": "p3",
+      "name": "Library",
+      "type": "library",
+      "lat": 12.9705,
+      "lng": 77.5955,
+      "avg_duration_minutes": 40,
+      "crowd_level": "low",
+      "open_from": "09:00",
+      "open_to": "20:00"
+    },
+    {
+      "id": "p4",
+      "name": "Historic Site",
+      "type": "monument",
+      "lat": 12.9740,
+      "lng": 77.5925,
+      "avg_duration_minutes": 30,
+      "crowd_level": "medium",
+      "open_from": "08:00",
+      "open_to": "17:00"
+    },
+    {
+      "id": "p5",
+      "name": "Quiet Cafe",
+      "type": "cafe",
+      "lat": 12.9710,
+      "lng": 77.5945,
+      "avg_duration_minutes": 35,
+      "crowd_level": "low",
+      "open_from": "08:00",
+      "open_to": "20:00"
+    },
+    {
+      "id": "p6",
+      "name": "Shopping Mall",
+      "type": "mall",
+      "lat": 12.9695,
+      "lng": 77.5965,
+      "avg_duration_minutes": 90,
+      "crowd_level": "high",
+      "open_from": "10:00",
+      "open_to": "22:00"
+    },
+    {
+      "id": "p7",
+      "name": "Riverside Walk",
+      "type": "park",
+      "lat": 12.9700,
+      "lng": 77.5930,
+      "avg_duration_minutes": 45,
+      "crowd_level": "low",
+      "open_from": "05:00",
+      "open_to": "22:00"
+    }
+  ]
+}
+

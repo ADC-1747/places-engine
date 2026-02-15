@@ -1,0 +1,43 @@
+{
+  "cafe": [
+    {"start_minutes": 420, "end_minutes": 600, "name": "breakfast"},
+    {"start_minutes": 660, "end_minutes": 840, "name": "lunch"},
+    {"start_minutes": 900, "end_minutes": 1020, "name": "afternoon"},
+    {"start_minutes": 1020, "end_minutes": 1200, "name": "dinner"}
+  ],
+  "restaurant": [
+    {"start_minutes": 420, "end_minutes": 600, "name": "breakfast"},
+    {"start_minutes": 660, "end_minutes": 840, "name": "lunch"},
+    {"start_minutes": 1020, "end_minutes": 1260, "name": "dinner"}
+  ],
+  "bar": [
+    {"start_minutes": 1020, "end_minutes": 1200, "name": "happy_hour"},
+    {"start_minutes": 1200, "end_minutes": 120, "name": "evening"}
+  ],
+  "nightclub": [
+    {"start_minutes": 1320, "end_minutes": 240, "name": "night"}
+  ],
+  "park": [
+    {"start_minutes": 360, "end_minutes": 600, "name": "morning"},
+    {"start_minutes": 960, "end_minutes": 1140, "name": "evening"}
+  ],
+  "museum": [
+    {"start_minutes": 600, "end_minutes": 1020, "name": "daytime"}
+  ],
+  "gallery": [
+    {"start_minutes": 600, "end_minutes": 1080, "name": "daytime"}
+  ],
+  "library": [
+    {"start_minutes": 540, "end_minutes": 1020, "name": "daytime"}
+  ],
+  "bookstore": [
+    {"start_minutes": 600, "end_minutes": 1200, "name": "daytime"}
+  ],
+  "mall": [
+    {"start_minutes": 600, "end_minutes": 1260, "name": "daytime"}
+  ],
+  "cinema": [
+    {"start_minutes": 840, "end_minutes": 1380, "name": "afternoon_evening"}
+  ]
+}
+

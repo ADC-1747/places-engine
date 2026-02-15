@@ -1,0 +1,57 @@
+{
+  "user": {
+    "lat": 12.9716,
+    "lng": 77.5946,
+    "time_available_minutes": 180,
+    "preferences": ["nightlife", "food"],
+    "avoid": [],
+    "start_time": "22:00"
+  },
+  "places": [
+    {
+      "id": "p1",
+      "name": "Late Night Diner",
+      "type": "restaurant",
+      "lat": 12.9720,
+      "lng": 77.5950,
+      "avg_duration_minutes": 45,
+      "crowd_level": "medium",
+      "open_from": "20:00",
+      "open_to": "04:00"
+    },
+    {
+      "id": "p2",
+      "name": "24/7 Cafe",
+      "type": "cafe",
+      "lat": 12.9730,
+      "lng": 77.5935,
+      "avg_duration_minutes": 30,
+      "crowd_level": "low",
+      "open_from": "00:00",
+      "open_to": "23:59"
+    },
+    {
+      "id": "p3",
+      "name": "Nightclub",
+      "type": "nightclub",
+      "lat": 12.9705,
+      "lng": 77.5955,
+      "avg_duration_minutes": 120,
+      "crowd_level": "high",
+      "open_from": "22:00",
+      "open_to": "04:00"
+    },
+    {
+      "id": "p4",
+      "name": "Morning Bakery",
+      "type": "bakery",
+      "lat": 12.9715,
+      "lng": 77.5945,
+      "avg_duration_minutes": 20,
+      "crowd_level": "low",
+      "open_from": "06:00",
+      "open_to": "14:00"
+    }
+  ]
+}
+
