@@ -12,7 +12,7 @@ A deterministic engine that selects 2-3 places from a set of nearby locations an
 - **Step 2** - Filter probable candidates from all places in two phases:
   - **Phase 1**: Apply hard constraints (opening hours, crowd level, time budget, user preferences)
   - **Phase 2**: Deduplication - filter out duplicate places of the same type
-    - Example: If a user has preferences "quiet" and "coffee", and there are 2 cafes and 1 park nearby, there's no point in having 2 cafes in the sequence (why would the user visit a cafe after visiting one?)
+    - Example: If a user has preferences "quiet" and "coffee", and there are 2 cafes and 1 park nearby, there's no point in having 2 cafes in the sequence (why would the user visit a cafe again after visiting one?)
   - This step reduces the problem space for quick and efficient output generation.
 
 - **Step 3** - Fallback mechanism:
