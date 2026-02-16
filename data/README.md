@@ -18,6 +18,9 @@ data/
 ├── times/               # Preferred time window files
 │   ├── default.json
 │   └── README.md
+├── sequences/           # Logical sequence files
+│   ├── default.json
+│   └── README.md
 └── README.md            # This file
 ```
 
@@ -32,6 +35,9 @@ Contains preference mapping files that map user preferences (e.g., "coffee") to 
 ### `times/`
 Contains preferred time window files that define when different place types are ideally visited. See `times/README.md` for details.
 
+### `sequences/`
+Contains logical sequence files that define preferred ordering patterns between place types (e.g., park before cafe). See `sequences/README.md` for details.
+
 ## Usage
 
 The engine automatically loads these files from the `data/` directory. You can customize behavior by:
@@ -39,6 +45,7 @@ The engine automatically loads these files from the `data/` directory. You can c
 - **Changing weights**: Edit files in `weights/` or create new ones
 - **Adding new preferences**: Edit files in `mappings/` or create new ones
 - **Adjusting time windows**: Edit files in `times/` or create new ones
+- **Adding logical sequences**: Edit files in `sequences/` or create new ones
 
 ### In Code
 ```python
@@ -56,11 +63,15 @@ engine = Engine(mappings_file='custom_mappings')
 # Use custom times
 engine = Engine(times_file='custom_times')
 
+# Use custom sequences
+engine = Engine(sequences_file='custom_sequences')
+
 # Combine all
 engine = Engine(
     weights_file='preference_focused',
     mappings_file='custom_mappings',
-    times_file='custom_times'
+    times_file='custom_times',
+    sequences_file='custom_sequences'
 )
 ```
 
@@ -70,6 +81,7 @@ The engine loads these files at initialization:
 1. `weights/{weights_file}.json` - Defaults to "default"
 2. `mappings/{mappings_file}.json` - Defaults to "default"
 3. `times/{times_file}.json` - Defaults to "default"
+4. `sequences/{sequences_file}.json` - Defaults to "default"
 
 If a file is not found, the engine will use hardcoded defaults and print a warning.
 

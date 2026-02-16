@@ -1,8 +1,7 @@
-from typing import Dict, List, Tuple, Optional, Set
+from typing import Dict, List, Tuple, Optional
 from dataclasses import dataclass
 from itertools import permutations
 from preprocessor import Graph, PlaceNode, Edge
-import re
 import json
 import os
 
@@ -17,7 +16,7 @@ class SequenceResult:
 
 class Engine:
     def __init__(self, weights: Dict[str, float] = None, weights_file: str = None,
-                 mappings_file: str = None, times_file: str = None):
+                 mappings_file: str = None, times_file: str = None, sequences_file: str = None):
         """
         Initialize the engine with scoring weights and configuration data.
         
@@ -37,6 +36,10 @@ class Engine:
                        - Full path to a JSON file
                        - Filename in data/times/ directory (e.g., "default.json" or "default")
                        - If None, uses "default.json" from data/times/ directory
+            sequences_file: Optional path to logical sequences JSON file. Can be:
+                          - Full path to a JSON file
+                          - Filename in data/sequences/ directory (e.g., "default.json" or "default")
+                          - If None, uses "default.json" from data/sequences/ directory
         """
         # Default scoring weights (fallback if file not found)
         default_weights = {
@@ -72,6 +75,10 @@ class Engine:
                 (w["start_minutes"], w["end_minutes"], w["name"])
                 for w in windows
             ]
+        
+        # Load logical sequences from data/sequences/ directory
+        sequences_file_to_load = sequences_file if sequences_file is not None else "default"
+        self.LOGICAL_SEQUENCES = self._load_sequences_from_file(sequences_file_to_load, [])
     
     def _get_data_dir(self) -> str:
         """Get the data directory path"""
@@ -149,6 +156,43 @@ class Engine:
             return default
         except Exception as e:
             print(f"Warning: Error loading times file {file_path}: {e}. Using default.")
+            return default
+    
+    def _load_sequences_from_file(self, sequences_file: str, default: List) -> List[Dict]:
+        """
+        Load logical sequences from a JSON file.
+        
+        Args:
+            sequences_file: Path to sequences file or filename in data/sequences/ directory
+            default: Default sequences to use if file not found
+            
+        Returns:
+            List of sequence dictionaries
+        """
+        # Determine full path
+        if os.path.isabs(sequences_file) or os.path.exists(sequences_file):
+            # Full path provided
+            file_path = sequences_file
+        else:
+            # Filename in data/sequences/ directory
+            filename = sequences_file if sequences_file.endswith('.json') else f"{sequences_file}.json"
+            data_dir = self._get_data_dir()
+            sequences_dir = os.path.join(data_dir, 'sequences')
+            file_path = os.path.join(sequences_dir, filename)
+        
+        # Load sequences from file
+        try:
+            if os.path.exists(file_path):
+                with open(file_path, 'r') as f:
+                    return json.load(f)
+            else:
+                print(f"Warning: Sequences file not found: {file_path}. Using default.")
+                return default
+        except json.JSONDecodeError as e:
+            print(f"Warning: Invalid JSON in sequences file {file_path}: {e}. Using default.")
+            return default
+        except Exception as e:
+            print(f"Warning: Error loading sequences file {file_path}: {e}. Using default.")
             return default
     
     def _load_weights_from_file(self, weights_file: str, default_weights: Dict[str, float]) -> Dict[str, float]:
@@ -418,11 +462,18 @@ class Engine:
             # Update current time
             current_time += edge.travel_time_minutes + place.avg_duration_minutes
             
-            # Logical sequence bonus (e.g., park before cafe, walk before rest)
+            # Logical sequence bonus (check all configured sequences)
             if i > 0:
                 prev_place = graph.nodes[sequence[i - 1]]
-                if prev_place.type == "park" and place.type == "cafe":
-                    score += self.WEIGHTS["logical_sequence"]  # Park then cafe makes sense
+                prev_type = prev_place.type.lower()
+                curr_type = place.type.lower()
+                
+                # Check if this sequence matches any configured logical sequence
+                for seq_rule in self.LOGICAL_SEQUENCES:
+                    if (seq_rule.get("from_type", "").lower() == prev_type and 
+                        seq_rule.get("to_type", "").lower() == curr_type):
+                        score += self.WEIGHTS["logical_sequence"]
+                        break  # Only apply bonus once per sequence
         
         # Distance efficiency penalty (shorter total distance is better)
         score -= total_distance * abs(self.WEIGHTS.get("distance_penalty", -2))  # Penalty for total distance
@@ -508,11 +559,19 @@ class Engine:
             elif i == 0:
                 reasons.append(f"accessible at {arrival_str}")
             
-            # Logical sequence
+            # Logical sequence (check all configured sequences)
             if i > 0:
                 prev_place = graph.nodes[sequence[i - 1]]
-                if prev_place.type == "park" and place.type == "cafe":
-                    reasons.append("good rest stop after walk")
+                prev_type = prev_place.type.lower()
+                curr_type = place.type.lower()
+                
+                # Check if this sequence matches any configured logical sequence
+                for seq_rule in self.LOGICAL_SEQUENCES:
+                    if (seq_rule.get("from_type", "").lower() == prev_type and 
+                        seq_rule.get("to_type", "").lower() == curr_type):
+                        reason = seq_rule.get("reason", "logical sequence")
+                        reasons.append(reason)
+                        break  # Only add one reason per sequence
             
             # Duration fit
             time_available = user_data.get("time_available_minutes", 0)
