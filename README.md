@@ -149,7 +149,7 @@ The app would interact via a REST API endpoint (`POST /api/v1/sequence`). The re
 
 Currently, the engine logic uses lots of hardcoded values for tags, preference mapping, weights for soft constraints, and preferred timing for places. To make it more dynamic and inclusive, I have added separate JSON files:
 
-- **Weights** (`data/weights/`): Different users might be comfortable with different choices. We can later add a human feedback loop that would update the weights for a specific user or a specific type of user based on their feedback.
+- **Weights** (`data/weights/`): Different users might be comfortable with different choices. We can later add a human feedback loop that would update the weights for a specific user or a specific type of user based on their feedback. This could also be used to automatically classify users as "flexible" (willing to adjust plans when conditions change) or "strict" (prefer to stick to original plan) based on their behavior patterns - users who frequently accept plan adjustments would get personalized weight profiles that favor adaptability, while strict users would get weights that favor stability.
 
 - **Timings** (`data/times/`): Different regions may have different timing preferences (e.g., in Europe, the Northern part prefers dinner between 16:00 to 18:00, whereas the Southern part prefers dinner between 18:00 to 20:00). Different preferences can be accommodated with this.
 
@@ -164,6 +164,25 @@ Also, for distance and speed, I am currently using hardcoded values, but we can 
 All processing is done with the data that the engine has at the time of its preprocessing start. If any constraints change after that, or any place becomes unavailable, the output won't update unless we run the engine again.
 
 This can be fixed by having an event-driven approach where any event (like an update in status) will update the output as well. However, this will also require recomputation. To save computation, we can cache the engine outputs until the user's trip is complete, so it will quickly update the output in case of an event trigger.
+
+**No Concurrent User Awareness**
+
+The system does not account for concurrent users visiting the same places. If multiple users are using the system simultaneously and visiting the same places, crowd levels would change dynamically (e.g., a place could go from "medium" to "high" crowd when several users arrive), but the current system treats each user's request independently. This means:
+
+- Users might all be recommended the same "low crowd" place, causing it to become crowded
+- Crowd level predictions become inaccurate as more users follow the recommendations
+- No coordination between users to distribute load across places
+
+**Potential Solutions:**
+- **System-level**: Implement a shared state/coordination layer that tracks real-time crowd levels across all active users
+- **User-level flexibility**: Add a user preference for "flexibility" (willing to adjust plans) vs "strict" (stick to original plan), but this addresses individual behavior, not the system limitation
+- **Feedback-based classification**: Use machine learning/feedback loops to automatically classify users as "flexible" or "strict" based on their behavior:
+  - Track user responses to updated recommendations (did they accept changes or stick to original plan?)
+  - Adjust user weights in `data/weights/` based on feedback patterns
+  - Users who frequently accept plan adjustments get higher "flexibility" weight
+  - Users who consistently stick to original plans get higher "strict" weight
+  - This creates personalized weight profiles without requiring explicit user input
+- **Hybrid approach**: Combine all three - system tracks concurrent users, feedback-based classification determines user type, and flexible users get updated recommendations while strict users keep their original plan
 
 
 
@@ -521,7 +540,7 @@ A friend group introduces several new challenges that would require significant 
 
 ### 5. Explicit Limitation Statement
 
-**"This approach is a batch processor that does not adapt to real-time changes. All processing is done with the data available at the time of preprocessing. If any constraints change after the engine starts (e.g., a place closes unexpectedly, crowd levels change, weather conditions change, or traffic conditions change), the output will not update unless the engine is run again with fresh data. The system has no event-driven mechanism to automatically update sequences when underlying conditions change. Additionally, the travel time calculation uses a simplified constant walking speed and straight-line distance, which may not accurately reflect real-world travel times in dense urban areas with obstacles, traffic lights, or complex pedestrian paths."**
+**"This approach is a batch processor that does not adapt to real-time changes. All processing is done with the data available at the time of preprocessing. If any constraints change after the engine starts (e.g., a place closes unexpectedly, crowd levels change, weather conditions change, or traffic conditions change), the output will not update unless the engine is run again with fresh data. The system has no event-driven mechanism to automatically update sequences when underlying conditions change. Additionally, the system does not account for concurrent users - if multiple users are recommended the same places simultaneously, crowd levels would change dynamically but each user's sequence is computed independently. Finally, the travel time calculation uses a simplified constant walking speed and straight-line distance, which may not accurately reflect real-world travel times in dense urban areas with obstacles, traffic lights, or complex pedestrian paths."**
 
 **Why this limitation matters**:
 - In production, you'd want to integrate with real-time APIs (Google Maps for traffic, Foursquare for crowd levels, weather APIs)
